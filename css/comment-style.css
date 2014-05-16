@@ -1,0 +1,79 @@
+.pager li {
+  list-style: none;
+}
+
+.webmention-list ul {
+  border-style: solid;
+}
+
+.webmention-list li {
+        display: inline-block;
+        list-style: none;
+        vertical-align: top;
+	text-align: center;
+}
+
+.webmention-list li img{
+	text-align: left;
+	border-radius: 20px;
+	display: block;
+}
+
+.facepile {
+   margin-left: 15px;
+   align: none;
+}
+
+.action {
+   clear: none;
+}
+
+.like, .favorite, .repost {
+   margin-left: 15px;
+}
+
+/* Comments */
+
+.comment-list li {
+       list-style: none;
+/*       display: flex;
+       align-items: flex-start; */
+       padding: 10px;
+       overflow: auto;
+}
+
+.webmention-list li:hover {
+  background: #eee;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.comment-list li img {
+	display: block;
+	float: left;
+	vertical-align: middle;
+	margin: 0 15px 0 0;
+}
+
+.comment-body {
+	float: left;
+	clear: right;
+}
+
+.children {
+       margin-left: 2em;
+       clear: left;
+}
+
+h4.comment-author {
+	font-size: 1.1em;
+}
+
+h4.comment-author {
+	text-decoration: none;
+}
+
+.comments-area h3{
+	font-size: 1.5em; 
+	padding: 10px;
+}
