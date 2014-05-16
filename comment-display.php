@@ -19,7 +19,6 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments" class="comments-area">
-1
 	<?php // You can start editing here -- including this comment! ?>
 	<?php if ( have_comments() ) : ?>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
@@ -32,18 +31,18 @@ if ( post_password_required() ) {
 		</nav><!-- #comment-nav-above -->
 		<?php endif; // check for comment navigation ?>
 		<?php $comments_by_type = &separate_comments($comments); ?>
-		<?php if (!empty($comments_by_type['webmention'])) { ?>
+		<?php if (!empty($comments_by_type['webmention']) && class_exists("SemanticLinkbacksPlugin")) { ?>
                 <h3>Mentions</h3>
 		
 	        <ul class="webmention-list">
-                        <?php
+                       <?php
                                 wp_list_comments(
                                 array(
                                         'type'       => 'webmention',
                                         'callback'   => 'sem_webmention',
                                         'avatar_size'=> 75
-                                )
-                        );
+                                ) );
+                             
                         ?>
                 </ul><!-- .webmention-list -->
 		<?php } ?>
@@ -52,18 +51,29 @@ if ( post_password_required() ) {
 
 		<ul class="comment-list">
 			<?php
+			   if (class_exists("SemanticLinkbacksPlugin"))
+                              {
 				wp_list_comments(
 				array(
 					'type'       => 'comment',
 					'callback'   => 'sem_comment',
 					'avatar_size'=> 100
-				)
-			);
+				) );
+			     }
+			   else
+                              {
+                                wp_list_comments(
+                                array(
+                                        'type'       => 'all',
+                                        'callback'   => 'sem_comment',
+                                        'avatar_size'=> 100
+                                ) );
+                             }
 			?>
 		</ul><!-- .comment-list -->
 		<?php } ?>
 
-		<?php if (!empty($comments_by_type['pingback'])) { ?>
+		<?php if (!empty($comments_by_type['pingback'])  && class_exists("SemanticLinkbacksPlugin")) { ?>
                <h3>Pingbacks</h3>
                   <ul class="ping-list">
                         <?php
