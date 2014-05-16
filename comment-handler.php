@@ -105,7 +105,7 @@ if (!function_exists('sem_comment')) :
                                     // If current post author is also comment author, make it known visually.
                                     ($comment->user_id === $post->post_author) ? '<span class="post-author"> ' . __(
                                         'Post author',
-                                        'indieweb'
+                                        'semanticcomments'
                                     ) . '</span> ' : ''); ?>
                             </h4>
                             <span class="comment-meta">
@@ -113,7 +113,7 @@ if (!function_exists('sem_comment')) :
                                             esc_url(get_comment_link($comment->comment_ID)),
                                             get_comment_time('c'),
                                             sprintf(
-                                                __('%1$s at %2$s', 'indieweb'),
+                                                __('%1$s at %2$s', 'semanticcomments'),
                                                 get_comment_date(),
                                                 get_comment_time()
                                             )
@@ -123,14 +123,14 @@ if (!function_exists('sem_comment')) :
                             <?php if ('0' == $comment->comment_approved) : ?>
                                 <p class="comment-awaiting-moderation"><?php _e(
                                     'Your comment is awaiting moderation.',
-                                    'indieweb'
+                                    'semanticcomments'
                                 ); ?></p>
                             <?php endif; ?>
 
                             <span class"p-summary"><?php comment_text(); ?></span>
                             <p class="reply">
                                 <?php comment_reply_link( array_merge($args, array(
-                                            'reply_text' => __('<span title="Reply" class="genericon genericon-reply">Reply</span>', 'indieweb'),
+                                            'reply_text' => __('<span title="Reply" class="genericon genericon-reply">Reply</span>', 'semanticcomments'),
                                             'depth'      => $depth,
                                             'max_depth'  => $args['max_depth']
                                         )

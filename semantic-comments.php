@@ -7,7 +7,7 @@
  * Version: 0.01
  * Author: David Shanske
  * Author URI: http://david.shanske.com
- * License: TTT
+ * License: CCO
  */
 
 

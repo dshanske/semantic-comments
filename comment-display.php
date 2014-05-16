@@ -3,9 +3,9 @@
  * The template for displaying Comments.
  *
  * The area of the page that contains both current comments
- * and the comment form.
+ * and the comment form. Based on the blank comment template from _s
  *
- * @package IndieWeb
+ * @package SemanticComments
  */
 
 /*
@@ -19,14 +19,14 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments" class="comments-area">
-
+1
 	<?php // You can start editing here -- including this comment! ?>
 	<?php if ( have_comments() ) : ?>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above" class="comment-navigation" role="navigation">
 			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'indieweb' ); ?></h1>
                        <ul class="pager">
-			<li class="previous"><?php previous_comments_link( __( '&larr; Older Comments', 'indieweb' ) ); ?></li>
+			<li class="previous"><?php previous_comments_link( __( '&larr; Older Comments', 'semanticcomments' ) ); ?></li>
 			<li class="next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'indieweb' ) ); ?></li>
                        </ul>
 		</nav><!-- #comment-nav-above -->
@@ -80,10 +80,10 @@ if ( post_password_required() ) {
             
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-below" class="comment-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'indieweb' ); ?></h1>
+			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'semanticcomments' ); ?></h1>
 			<ul class="pager">
-				<li class="previous"><?php previous_comments_link( __( '&larr; Older Comments', 'indieweb' ) ); ?></li>
-				<li class="next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'indieweb' ) ); ?></li>
+				<li class="previous"><?php previous_comments_link( __( '&larr; Older Comments', 'semanticomments' ) ); ?></li>
+				<li class="next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'semanticcomments' ) ); ?></li>
                         </ul>
 		</nav><!-- #comment-nav-below -->
 		<?php endif; // check for comment navigation ?>
