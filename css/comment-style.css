@@ -52,12 +52,13 @@
 	display: block;
 	float: left;
 	vertical-align: middle;
-	margin: 0 15px 0 0;
+	margin: 0 5px 0 0;
 }
 
 .comment-body {
 	float: left;
 	clear: right;
+	margin-left: 10px;
 }
 
 .children {
@@ -65,15 +66,21 @@
        clear: left;
 }
 
-h4.comment-author {
-	font-size: 1.1em;
-}
-
-h4.comment-author {
+h3.comment-author {
 	text-decoration: none;
+	text-align: left;
+	vertical-align: middle;
+	display: inline;
+	font-size: 1.2em;
 }
 
-.comments-area h3{
-	font-size: 1.5em; 
-	padding: 10px;
+.comment-meta {
+	padding: 0 0 10px 5px;
+}
+
+.comment-time {
+	font-size: 0.8em;
+	display: inline;
+	margin-left: 20px;
+	vertical-align: bottom;
 }

@@ -97,8 +97,9 @@ if (!function_exists('sem_comment')) :
                             <?php echo get_avatar($comment, 64); ?>
                         </a>
                         <div class="comment-body">
+			 <div class="comment-meta">
 			    <a href="" class="in-reply-to"></a>
-                            <h4 class="comment-author p-author vcard h-card">
+                            <h3 class="comment-author p-author vcard h-card">
                                 <?php
                                 printf('<cite class="fn">%1$s %2$s</cite>',
                                     get_comment_author_link(),
@@ -107,8 +108,8 @@ if (!function_exists('sem_comment')) :
                                         'Post author',
                                         'semanticcomments'
                                     ) . '</span> ' : ''); ?>
-                            </h4>
-                            <span class="comment-meta">
+                            </h3>
+                            <span class="comment-time">
                                 <?php printf('<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
                                             esc_url(get_comment_link($comment->comment_ID)),
                                             get_comment_time('c'),
@@ -126,11 +127,11 @@ if (!function_exists('sem_comment')) :
                                     'semanticcomments'
                                 ); ?></p>
                             <?php endif; ?>
-
+			</div>
                             <span class"p-summary"><?php comment_text(); ?></span>
                             <p class="reply">
                                 <?php comment_reply_link( array_merge($args, array(
-                                            'reply_text' => __('<span title="Reply" class="genericon genericon-reply">Reply</span>', 'semanticcomments'),
+                                            'reply_text' => __('<span title="Reply" class="comment-reply">Reply</span>', 'semanticcomments'),
                                             'depth'      => $depth,
                                             'max_depth'  => $args['max_depth']
                                         )
