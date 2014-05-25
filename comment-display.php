@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying Comments.
  *
@@ -19,6 +20,7 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments" class="comments-area">
+        <?php syndication_links(); ?>
 	<?php // You can start editing here -- including this comment! ?>
 	<?php if ( have_comments() ) : ?>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
@@ -107,7 +109,25 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php _e( 'Comments are closed.', 'indieweb' ); ?></p>
 	<?php endif; ?>
 	<div class="commentf">
-        <?php comment_form(); ?>
+	   <h3>Comment on this Post</h3>
+		<ul class="webactions">
+		   <?php webaction_post(); ?>
+		   <?php webaction_repost(); ?>
+                   <?php webaction_reply(); ?>
+                   <?php webaction_props(); ?>
+
+		</ul>
+
+	
+	
+           <h3>Webmentions</h3>
+	   <p>This site does not offer a way for readers to post comments directly on the site. Instead, this site accepts <a href="http://indiewebcamp.com/webmention">webmentions</a>,
+              so you can respond on your own site and link back to us. We also support the import of comments from the sites we syndicate to.</p>
+        <?php 
+		
+		// Offer a webmention form instead of comment_form
+		webmention_form();
+	?>
         </div>
 
 </div><!-- #comments -->
