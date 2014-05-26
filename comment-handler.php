@@ -2,7 +2,7 @@
 
 if (!function_exists('change_avatar_css')) :
 function change_avatar_css($class) {
-$class = str_replace("class='avatar", "class='avatar img-rounded u-photo", $class) ;
+$class = str_replace("class='photo", "class='photo u-photo", $class) ;
 return $class;
 }
 add_filter('get_avatar','change_avatar_css');
@@ -26,20 +26,26 @@ function sem_webmention( $comment, array $args, $depth ) {
   if ( ! empty( $url ) && 'http://' !== $url ) {
     $face = sprintf( '<a href="%s" rel="external nofollow" title="%s">%s</a>', esc_url( $url ), $author, $face );
   }
-  echo '<li class="facepile u-in-reply-to" id="comment-' . get_comment_ID() . '">' . $face;
-   switch ($wm_type) {    
+  echo '<li class="facepile h-cite p-comment" id="comment-' . get_comment_ID() . '">' . $face;
+  switch ($wm_type) {    
      case "like": 
+	echo '<a href="" class="u-in-like-of"></a>';
   	echo '<a class="action u-like" title="Liked on ' . $host . '" href="'. esc_url( $c_url ) . '">Liked</a>';
      break;
      case "repost":
+	  echo '<a href="" class="u-repost-of"></a>';
         echo '<a class="action u-repost" title="Reposted on  ' . $host . '" href="'. esc_url( $c_url ) . '">Reposted</a>';
      break;
      case "favorite":
-        echo '<a class="action u-like u-favorite" title="Favorited on ' . $host . '" href="'. esc_url( $c_url ) . '">Favorited/a>';
+	  echo '<a href="" class="u-in-like-of"></a>';
+        echo '<a class="action u-like u-favorite" title="Favorited on ' . $host . '" href="'. esc_url( $c_url ) . '">Favorited</a>';
+     break;
+     case "rsvp":
+        echo '<a class="action in-reply-to" title="Reply ' . $host . '" href="'. esc_url( $c_url ) . '">RSVP</a>';
      break;
      case "reply":
-        echo '<a class="action in-reply-to" title="Reply ' . $host . '" href="'. esc_url( $c_url ) . '">Reply/a>';
-     break;
+        echo '<a class="action in-reply-to" title="Reply ' . $host . '" href="'. esc_url( $c_url ) . '">Reply</a>';
+     break;	
      default:
         echo '<a class="action" title="Mentioned on ' . $host . '" href="'. esc_url( $c_url ) . '">Mentioned</a>';
     }
@@ -92,7 +98,7 @@ if (!function_exists('sem_comment')) :
         $GLOBALS['comment'] = $comment;
                 // Proceed with normal comments.
                 global $post; ?>
-                <li class="p-comment h-entry h-cite comment" id="li-comment-<?php comment_ID(); ?>">
+                <li class="p-comment h-cite comment" id="li-comment-<?php comment_ID(); ?>">
                         <a href="<?php echo $comment->comment_author_url;?>">
                             <?php echo get_avatar($comment, 64); ?>
                         </a>
@@ -128,19 +134,29 @@ if (!function_exists('sem_comment')) :
                                 ); ?></p>
                             <?php endif; ?>
 			</div>
-                            <span class"p-summary"><?php comment_text(); ?></span>
-                            <p class="reply">
-                                <?php comment_reply_link( array_merge($args, array(
-                                            'reply_text' => __('<span title="Reply" class="comment-reply">Reply</span>', 'semanticcomments'),
-                                            'depth'      => $depth,
-                                            'max_depth'  => $args['max_depth']
-                                        )
-                                    )); ?>
-                            </p>
+                            <span class="p-summary"><?php comment_text(); ?></span>
                         </div>
                         <!--/.comment-body -->
                 <?php
     }
+endif;
+
+
+if (!function_exists('webmention_form')) :
+  function webmention_form() {
+  ?>
+     <form id="webmention-form" action="<?php echo site_url('?webmention=endpoint'); ?>" method="post">
+      <p>
+        <label for="webmention-source"><?php _e('Respond on your own site:', 'webmention_form'); ?></label>
+        <input id="webmention-source" size="15" type="url" name="source" placeholder="http://example.com/post/100" />
+      
+        <input id="webmention-submit" type="submit" name="submit" value="Send" />
+      
+      <input id="webmention-target" type="hidden" name="target" value="<?php the_permalink(); ?>" />
+	</p>
+    </form>
+  <?php
+  }
 endif;
 
 ?>

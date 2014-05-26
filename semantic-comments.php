@@ -23,16 +23,11 @@ function semantic_comment_template( $comment_template ) {
 add_filter( "comments_template", "semantic_comment_template" );
 
 function semantic_scripts() {
+ // Add Genericons font, for use in the main stylesheet.
+        wp_enqueue_style( 'genericons', '//cdn.jsdelivr.net/genericons/3.0.3/genericons.css', array(), '3.0.3' );
     wp_enqueue_style( 'comment-style', plugin_dir_url( __FILE__ ) . 'css/comment-style.css');
      wp_enqueue_style( 'syndication-style', plugin_dir_url( __FILE__ ) . 'css/syndication-style.css');	
- // Add Genericons font, for use in the main stylesheet.
-        wp_enqueue_style( 'genericons', plugin_dir_url( __FILE__ ) . '/generic
-ons/genericons.css', array(), '3.0.3' );
-
-
 }
 
 add_action( 'wp_enqueue_scripts', 'semantic_scripts' );
-
-
 ?>
