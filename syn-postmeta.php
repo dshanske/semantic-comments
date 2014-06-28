@@ -115,7 +115,4 @@ function synbox_save_post_meta( $post_id ) {
 }
 
 add_action( 'save_post', 'synbox_save_post_meta' );
-
-
 ?>
-
