@@ -45,8 +45,7 @@ if ( post_password_required() ) {
 		<?php endif; // check for comment navigation ?>
         </div>
         <div class="comment-return">
-		<?php $comments_by_type = &separate_comments($comments); ?>
-		<?php if (!empty($comments_by_type['webmention']) && class_exists("SemanticLinkbacksPlugin")) { ?>
+		<?php if ((webmention_count()!=0) && class_exists("SemanticLinkbacksPlugin")) { ?>
                 
 		<h3>Mentions</h3>
 		
@@ -63,7 +62,7 @@ if ( post_password_required() ) {
                 </ul><!-- .webmention-list -->
 		<?php } ?>
 
-		<?php if (!empty($comments_by_type['comment'])) { ?>
+		<?php if (comment_count()!=0) { ?>
                 <h3>Comments</h3>
 
 		<ul class="comment-list">
@@ -90,7 +89,7 @@ if ( post_password_required() ) {
 		</ul><!-- .comment-list -->
 		<?php } ?>
 
-		<?php if (!empty($comments_by_type['pingback'])  && class_exists("SemanticLinkbacksPlugin")) { ?>
+		<?php if ((ping_count()!=0)  && class_exists("SemanticLinkbacksPlugin")) { ?>
                <h3>Pingbacks</h3>
                   <ul class="ping-list">
                         <?php
