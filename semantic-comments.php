@@ -24,7 +24,8 @@ add_filter( "comments_template", "semantic_comment_template" );
 
 function semantic_scripts() {
  // Add Genericons font, for use in the main stylesheet.
-        wp_enqueue_style( 'genericons', '//cdn.jsdelivr.net/genericons/3.1/genericons.css', array(), '3.1' );
+        // wp_enqueue_style( 'genericons', '//cdn.jsdelivr.net/genericons/3.1/genericons.css', array(), '3.1' );
+	wp_enqueue_style( 'genericons', plugin_dir_url( __FILE__ ) . '/genericons/genericons.css', array(), null );
     wp_enqueue_style( 'comment-style', plugin_dir_url( __FILE__ ) . 'css/comment-style.css');
      wp_enqueue_style( 'syndication-style', plugin_dir_url( __FILE__ ) . 'css/syndication-style.css');	
 }
