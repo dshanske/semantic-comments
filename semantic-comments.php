@@ -4,7 +4,7 @@
  * Plugin URI: http://david.shanske.com
  * Description: New Comment Templating that Offers Semantic Webmention Facepiles
  as well as separate Webmentions, Comments, and Trackbacks/Linkbacks. Styling is minimal
- * Version: 0.02
+ * Version: 0.03
  * Author: David Shanske
  * Author URI: http://david.shanske.com
  * License: CCO
@@ -12,9 +12,6 @@
 
 
 require_once( plugin_dir_path( __FILE__ ) . '/comment-handler.php');
-require_once( plugin_dir_path( __FILE__ ) . '/syndication.php');
-require_once( plugin_dir_path( __FILE__ ) . '/syn-postmeta.php');
-
 
 function semantic_comment_template( $comment_template ) {
         return plugin_dir_path( __FILE__ ) . '/comment-display.php';

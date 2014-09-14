@@ -202,6 +202,7 @@ endif;
 if (!function_exists('webmention_form')) :
   function webmention_form() {
   ?>
+     <br />
      <form id="webmention-form" action="<?php echo site_url('?webmention=endpoint'); ?>" method="post">
       <p>
         <label for="webmention-source"><?php _e('Respond on your own site:', 'webmention_form'); ?></label>

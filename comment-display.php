@@ -21,8 +21,6 @@ if ( post_password_required() ) {
 <div id="comments" class="comments-area">
      <div class="comment-nav">
 	<ul class="respond">
-	<li><span class="comment-links"><h3>Respond via:</h3><?php syndication_links(); ?>
-        </span></li>
 	<li>
         <?php 
 		
@@ -30,7 +28,6 @@ if ( post_password_required() ) {
 		webmention_form();
 	?>
 	</li>
-
 
 	</ul>
 	<?php if ( have_comments() ) : ?>
@@ -46,7 +43,7 @@ if ( post_password_required() ) {
         </div>
         <div class="comment-return">
 		<?php if ((webmention_count()!=0) && class_exists("SemanticLinkbacksPlugin")) { ?>
-                
+                <a id="mentions"></a>
 		<h3>Mentions</h3>
 		
 	        <ul class="webmention-list">
@@ -125,29 +122,6 @@ if ( post_password_required() ) {
 
            <h3>Respond</h3>
 	   <p>Readers are encouraged to respond on their own site, sending a <a href="http://indiewebcamp.com/webmention">webmention</a> 
-              or using the form to notify of a reply.</p>
-
-	   <span class="syn-links">You can also comment or favorite/like by clicking through to: <?php syndication_links (); ?></span>
-
-	<?php
-	  $format = get_post_format();
-	   if ( false === $format ) { $format = 'standard'; }
-        ?>
-		<div class="webactions">
-		    <h3>Quick Actions</h3>
-		    <?php 
-			if ($format=='standard')
-			   {
-				webaction_post(); 
-			   }
-			else {
-	                   	 webaction_props();
-        	            	 webaction_reply(); 
-			         webaction_repost(); 
-			   }
-		   ?>
-
-		</div>
-
+or using the form to notify of a reply or using the syndication(Facebook, Twitter, etc) links to respond on those sites.</p>
 </div><!-- #comments -->
-?>
+
