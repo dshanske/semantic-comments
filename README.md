@@ -1,7 +1,9 @@
 semantic-comments
 =================
 
-Semantic Comments adds a Comment Template to Wordpress that Takes Advantage of Webmentions and the Semantic Linkbacks Plugin
+Semantic Comments improves comment handling in WordPress to take advantage of Webmentions and the Semantic Linkbacks Plugin. 
+
+This includes several ways to display comments, including a Facepile.
 
 Version 0.1 - Complete Rewrite of Display Code to be less intrusive in relation to the theme, addition of Settings Page under Comments.
 
