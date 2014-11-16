@@ -10,7 +10,6 @@
  */
 
 require_once( plugin_dir_path( __FILE__ ) . '/comment-config.php');
-require_once( plugin_dir_path( __FILE__ ) . '/comment-handler.php');
 require_once( plugin_dir_path( __FILE__ ) . '/comment-walker.php');
 
 function semantic_comment_template( $comment_template ) {
@@ -26,11 +25,12 @@ function wm_comment_args( $args ){
     return $args;
 }
 
-// add_filter( "comments_template", "semantic_comment_template" );
+add_filter( "comments_template", "semantic_comment_template" );
 
 function semantic_scripts() {
  // Add Genericons font, for use in the main stylesheet.
         // wp_enqueue_style( 'genericons', '//cdn.jsdelivr.net/genericons/3.1/genericons.css', array(), '3.1' );
+	wp_enqueue_script('hovercards', plugin_dir_url( __FILE__ ) . '/js/jquery.hovercard.min.js', array('jquery'), '1.0', 1);
 	wp_enqueue_style( 'genericons', plugin_dir_url( __FILE__ ) . '/genericons/genericons.css', array(), null );
     wp_enqueue_style( 'comment-style', plugin_dir_url( __FILE__ ) . 'css/comment-style.css');
 }
@@ -44,5 +44,24 @@ return $class;
 }
 add_filter('get_avatar','change_avatar_css');
 endif;
+
+if (!function_exists('webmention_form')) :
+  function webmention_form() {
+  ?>
+     <br />
+     <form id="webmention-form" action="<?php echo site_url('?webmention=endpoint'); ?>" method="post">
+      <p>
+        <label for="webmention-source"><?php _e('Respond on your own site:', 'webmention_form'); ?></label>
+        <input id="webmention-source" size="15" type="url" name="source" placeholder="http://example.com/post/100" />
+  
+        <input id="webmention-submit" type="submit" name="submit" value="Send" />
+  
+      <input id="webmention-target" type="hidden" name="target" value="<?php the_permalink(); ?>" />
+        </p>
+    </form>
+  <?php
+  }
+endif;
+
 
 ?>
