@@ -113,15 +113,15 @@ class Walker_WMComment extends Walker_Comment {
  		switch ($wm_type) {    
   		   case "like": 
 			$wm = '<a href="" class="u-in-like-of"></a>';
-		  	$wm = '<a class="action u-like" title="Liked on ' . $host . '" href="'. esc_url( $c_url ) . '" ></a>';
+		  	$wm .= '<a class="action u-like" title="Liked on ' . $host . '" href="'. esc_url( $c_url ) . '" >Like</a>';
   			break;
    		   case "repost":
 			$wm =  '<a href="" class="u-repost-of"></a>';
-        		$wm =  '<a class="action u-repost" title="Reposted on  ' . $host . '" href="'. esc_url( $c_url ) . '"></a>';
+        		$wm .=  '<a class="action u-repost" title="Reposted on  ' . $host . '" href="'. esc_url( $c_url ) . '"></a>';
      			break;
      		   case "favorite":
 			$wm = '<a href="" class="u-in-like-of"></a>';
-        		$wm =  '<a class="action u-like u-favorite" title="Favorited on ' . $host . '" href="'. esc_url( $c_url ) . '"></a>';
+        		$wm .=  '<a class="action u-like u-favorite" title="Favorited on ' . $host . '" href="'. esc_url( $c_url ) . '"></a>';
      			break;
      		   case "rsvp":
         		$wm =  '<a class="action in-reply-to" title="Reply ' . $host . '" href="'. esc_url( $c_url ) . '"></a>';
@@ -132,8 +132,6 @@ class Walker_WMComment extends Walker_Comment {
      		   default:
         		$wm = '<a class="action" title="Mentioned on ' . $host . '" href="'. esc_url( $c_url ) . '"></a>';
     }
-
-
 
 ?>
 		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class('p-comment h-cite'); ?>>
