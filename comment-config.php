@@ -12,6 +12,11 @@ function sc_options_init() {
     add_settings_section( 'sc-content', 'Content Options', 'sc_options_callback', 'sc_options' );
     add_settings_field( 'comment_form', 'Display Comment Form', 'sc_callback', 'sc_options', 'sc-content' ,  array( 'name' => 'comment_form') );
     add_settings_field( 'webmention_form', 'Display Webmention Form', 'sc_callback', 'sc_options', 'sc-content' ,  array( 'name' => 'webmention_form') );
+    add_settings_field( 'template', 'Disable Comment Template', 'sc_callback', 'sc_options', 'sc-content' ,  array( 'name' => 'template') );  
+    add_settings_field( 'short_ping', 'Disable Short Mention Display', 'sc_callback', 'sc_options', 'sc-content' ,  array( 'name' => 'short_ping') );
+    add_settings_field( 'comment_walker', 'Disable Comment Walker', 'sc_callback', 'sc_options', 'sc-content' ,  array( 'name' => 'comment_walker') );
+
+
     add_settings_field( 'mention_size', 'Size of Mention Picture', 'scnum_callback', 'sc_options', 'sc-content' ,  array( 'name' => 'mention_size') );
     add_settings_field( 'comment_size', 'Size of Comment Picture', 'scnum_callback', 'sc_options', 'sc-content' ,  array( 'name' => 'comment_size') );
 

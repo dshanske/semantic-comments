@@ -12,20 +12,32 @@
 require_once( plugin_dir_path( __FILE__ ) . '/comment-config.php');
 require_once( plugin_dir_path( __FILE__ ) . '/comment-walker.php');
 
+$options = get_option('sc_options');
+
 function semantic_comment_template( $comment_template ) {
         return plugin_dir_path( __FILE__ ) . '/comment-display.php';
 }
 
 add_filter( 'wp_list_comments_args', 'wm_comment_args' );
 function wm_comment_args( $args ){
-    $args['walker']= new Walker_WMComment();
-    $args['short_ping'] = true;
-    unset($args['callback']);
-    unset($args['end-callback']);
+    $options = get_option('sc_options');
+    if ($options['short_ping']==0)
+	{
+    	   $args['short_ping'] = true;
+        }
+    if ($options['comment_walker']==0)
+	{
+           $args['walker']= new Walker_WMComment();
+           unset($args['callback']);
+           unset($args['end-callback']);
+       }
     return $args;
 }
 
-add_filter( "comments_template", "semantic_comment_template" );
+if ($options['template']==0)
+   {
+     add_filter( "comments_template", "semantic_comment_template" );
+   }
 
 function semantic_scripts() {
  // Add Genericons font, for use in the main stylesheet.

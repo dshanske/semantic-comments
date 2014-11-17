@@ -130,7 +130,7 @@ class Walker_WMComment extends Walker_Comment {
         		$wm = '<a class="action in-reply-to" title="Reply ' . $host . '" href="'. esc_url( $c_url ) . '"></a>';
      			break;	
      		   default:
-        		$wm = '<a class="action" title="Mentioned on ' . $host . '" href="'. esc_url( $c_url ) . '"></a>';
+        		$wm = '<a class="action" title="Mentioned on ' . $host . '" href="'. esc_url( $c_url ) . '">Mention</a>';
     }
 
 ?>
