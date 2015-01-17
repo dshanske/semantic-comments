@@ -75,5 +75,16 @@ if (!function_exists('webmention_form')) :
   }
 endif;
 
+function sc_plugin_notice() {
+    if (!class_exists("SemanticLinkbacksPlugin"))
+        {
+            echo '<div class="error"><p>';
+           _e( 'This plugin requires the Semantic Linkbacks Plugin to work properly', 'scomments' );
+            echo '</p></div>';
+        }
+}
+add_action( 'admin_notices', 'sc_plugin_notice' );
+
+
 
 ?>
